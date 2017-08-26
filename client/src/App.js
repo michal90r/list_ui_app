@@ -2,6 +2,7 @@ import React from 'react';
 import {createStore} from 'redux'
 import uuid from 'uuid';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
+import {Provider, connect} from 'react-redux'
 
 import './App.css';
 
@@ -114,10 +115,10 @@ class App extends React.Component {
 
                     <hr/>
                     <Switch>
-                        <Route exact path='/' component={Games}/>
-                        <Route path='/games' component={Games}/>
-                        <Route path='/series' component={Series}/>
-                        <Route path='/movies' component={Movies}/>
+                        <Route exact path='/' component={WrappedGames}/>
+                        <Route path='/games' component={WrappedGames}/>
+                        <Route path='/series' component={WrappedSeries}/>
+                        <Route path='/movies' component={WrappedMovies}/>
                     </Switch>
                 </div>
             </Router>
@@ -126,95 +127,6 @@ class App extends React.Component {
 }
 
 
-class Games extends React.Component {
-    componentDidMount() {
-        gamesStore.subscribe(() => this.forceUpdate());
-    }
-
-    render() {
-        const games = gamesStore.getState();
-
-        return (
-            <Tab
-                title={this.constructor.name}
-                rows={games}
-                onTrashClick={(id) => (
-                    gamesStore.dispatch({
-                        type: 'DELETE_GAME',
-                        id: id,
-                    })
-                )}
-                onTitleSubmit={(title) => (
-                    gamesStore.dispatch({
-                        type: 'ADD_GAME',
-                        title: title,
-                    })
-                )}
-            />
-        );
-    }
-}
-
-
-class Series extends React.Component {
-    componentDidMount() {
-        tvSeriesStore.subscribe(() => this.forceUpdate());
-    }
-
-    render() {
-        const tvSeries = tvSeriesStore.getState();
-
-        return (
-            <Tab
-                title={this.constructor.name}
-                rows={tvSeries}
-                onTrashClick={(id) => (
-                    tvSeriesStore.dispatch({
-                        type: 'DELETE_SERIES',
-                        id: id,
-                    })
-                )}
-                onTitleSubmit={(title) => (
-                    tvSeriesStore.dispatch({
-                        type: 'ADD_SERIES',
-                        title: title,
-                    })
-                )}
-            />
-        );
-    }
-}
-
-
-
-class Movies extends React.Component {
-    componentDidMount() {
-        moviesStore.subscribe(() => this.forceUpdate());
-    }
-
-    render() {
-        const movies = moviesStore.getState();
-
-        return (
-            <Tab
-                title={this.constructor.name}
-                rows={movies}
-                onTrashClick={(id) => (
-                    moviesStore.dispatch({
-                        type: 'DELETE_MOVIE',
-                        id: id,
-                    })
-                )}
-                onTitleSubmit={(title) => (
-                    moviesStore.dispatch({
-                        type: 'ADD_MOVIE',
-                        title: title,
-                    })
-                )}
-            />
-        );
-    }
-}
 
 const Tab = (props) => (
     <div>
@@ -228,6 +140,111 @@ const Tab = (props) => (
         />
     </div>
 );
+
+
+const mapGamesStateToTabProps = (state) => {
+    return {
+        rows : state
+    };
+};
+
+const mapGamesDispatchToTabProps = (dispatch) => (
+    {
+        onTrashClick: (id) => (
+            dispatch({
+                type: 'DELETE_GAME',
+                id: id,
+            })
+        ),
+        onTitleSubmit: (title) => (
+            dispatch({
+                type: 'ADD_GAME',
+                title: title,
+            })
+        )
+    }
+);
+
+const Games = connect(
+    mapGamesStateToTabProps,
+    mapGamesDispatchToTabProps
+)(Tab);
+
+const WrappedGames = () => (
+    <Provider store={gamesStore}>
+        <Games/>
+    </Provider>
+);
+
+const mapSeriesStateToTabProps = (state) => {
+    return {
+        rows : state
+    };
+};
+
+const mapSeriesDispatchToTabProps = (dispatch) => (
+    {
+        onTrashClick: (id) => (
+            dispatch({
+                type: 'DELETE_SERIES',
+                id: id,
+            })
+        ),
+        onTitleSubmit: (title) => (
+            dispatch({
+                type: 'ADD_SERIES',
+                title: title,
+            })
+        )
+    }
+);
+
+const Series = connect(
+    mapSeriesStateToTabProps,
+    mapSeriesDispatchToTabProps
+)(Tab);
+
+const WrappedSeries = () => (
+    <Provider store={tvSeriesStore}>
+        <Series/>
+    </Provider>
+);
+
+
+const mapMoviesStateToTabProps = (state) => {
+    return {
+        rows : state
+    };
+};
+
+const mapMoviesDispatchToTabProps = (dispatch) => (
+    {
+        onTrashClick: (id) => (
+            dispatch({
+                type: 'DELETE_MOVIE',
+                id: id,
+            })
+        ),
+        onTitleSubmit: (title) => (
+            dispatch({
+                type: 'ADD_MOVIE',
+                title: title,
+            })
+        )
+    }
+);
+
+const Movies = connect(
+    mapMoviesStateToTabProps,
+    mapMoviesDispatchToTabProps
+)(Tab);
+
+const WrappedMovies = () => (
+    <Provider store={moviesStore}>
+        <Movies/>
+    </Provider>
+);
+
 
 const TitleList = (props) => (
     <div>
