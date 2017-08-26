@@ -1,5 +1,5 @@
 import React from 'react';
-import {createStore, combineReducers} from 'redux'
+import {createStore} from 'redux'
 import uuid from 'uuid';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 
@@ -22,8 +22,8 @@ function gamesReducer(state = [
         }
         case 'DELETE_GAME': {
             return state.filter((game) => (
-                    game.id !== action.id
-                ))
+                game.id !== action.id
+            ))
         }
         default: {
             return state
@@ -47,8 +47,8 @@ function tvSeriesReducer(state = [
         }
         case 'DELETE_SERIES': {
             return state.filter((series) => (
-                    series.id !== action.id
-                ))
+                series.id !== action.id
+            ))
         }
         default: {
             return state
@@ -73,15 +73,14 @@ function moviesReducer(state = [
         }
         case 'DELETE_MOVIE': {
             return state.filter((movie) => (
-                    movie.id !== action.id
-                ))
+                movie.id !== action.id
+            ))
         }
         default: {
             return state
         }
     }
 }
-
 
 
 const gamesStore = createStore(gamesReducer);
@@ -136,83 +135,26 @@ class Games extends React.Component {
         const games = gamesStore.getState();
 
         return (
-            <div>
-                <h1>Games</h1>
-                <GamesView games={games}/>
-                <GamesInput/>
-            </div>
+            <Tab
+                title={this.constructor.name}
+                rows={games}
+                onTrashClick={(id) => (
+                    gamesStore.dispatch({
+                        type: 'DELETE_GAME',
+                        id: id,
+                    })
+                )}
+                onTitleSubmit={(title) => (
+                    gamesStore.dispatch({
+                        type: 'ADD_GAME',
+                        title: title,
+                    })
+                )}
+            />
         );
     }
 }
 
-
-class GamesView extends React.Component {
-    handleClick = (id) => {
-        gamesStore.dispatch({
-            type: 'DELETE_GAME',
-            id: id,
-        });
-    };
-
-    render() {
-        const games = this.props.games.map((game, index) => (
-            <div
-                key={index}
-                onClick={() => this.handleClick(game.id)}
-            >
-                {game.title}
-            </div>
-        ));
-        return (
-            <div>
-                {games}
-            </div>
-        );
-    }
-}
-
-
-class GamesInput extends React.Component {
-    state = {
-        value: '',
-    };
-
-    onChange = (e) => {
-        this.setState({
-            value: e.target.value,
-        })
-    };
-
-    handleSubmit = () => {
-        gamesStore.dispatch({
-            type: 'ADD_GAME',
-            title: this.state.value,
-        });
-        this.setState({
-            value: '',
-        });
-    };
-
-    render() {
-        return (
-            <div>
-                <h2>Games Input</h2>
-                <input
-                    onChange={this.onChange}
-                    value={this.state.value}
-                    type='text'
-                />
-                <button
-                    onClick={this.handleSubmit}
-                    type="submit"
-                >
-                    Submit
-                </button>
-            </div>
-        );
-    }
-
-}
 
 class Series extends React.Component {
     componentDidMount() {
@@ -223,83 +165,27 @@ class Series extends React.Component {
         const tvSeries = tvSeriesStore.getState();
 
         return (
-            <div>
-                <h1>Series</h1>
-                <SeriesView tvSeries={tvSeries}/>
-                <SeriesInput/>
-            </div>
+            <Tab
+                title={this.constructor.name}
+                rows={tvSeries}
+                onTrashClick={(id) => (
+                    tvSeriesStore.dispatch({
+                        type: 'DELETE_SERIES',
+                        id: id,
+                    })
+                )}
+                onTitleSubmit={(title) => (
+                    tvSeriesStore.dispatch({
+                        type: 'ADD_SERIES',
+                        title: title,
+                    })
+                )}
+            />
         );
     }
 }
 
 
-class SeriesView extends React.Component {
-    handleClick = (id) => {
-        tvSeriesStore.dispatch({
-            type: 'DELETE_SERIES',
-            id: id,
-        });
-    };
-
-    render() {
-        const tvSeries = this.props.tvSeries.map((series, index) => (
-            <div
-                key={index}
-                onClick={() => this.handleClick(series.id)}
-            >
-                {series.title}
-            </div>
-        ));
-        return (
-            <div>
-                {tvSeries}
-            </div>
-        );
-    }
-}
-
-
-class SeriesInput extends React.Component {
-    state = {
-        value: '',
-    };
-
-    onChange = (e) => {
-        this.setState({
-            value: e.target.value,
-        })
-    };
-
-    handleSubmit = () => {
-        tvSeriesStore.dispatch({
-            type: 'ADD_SERIES',
-            title: this.state.value,
-        });
-        this.setState({
-            value: '',
-        });
-    };
-
-    render() {
-        return (
-            <div>
-                <h2>Series Input</h2>
-                <input
-                    onChange={this.onChange}
-                    value={this.state.value}
-                    type='text'
-                />
-                <button
-                    onClick={this.handleSubmit}
-                    type="submit"
-                >
-                    Submit
-                </button>
-            </div>
-        );
-    }
-
-}
 
 class Movies extends React.Component {
     componentDidMount() {
@@ -310,43 +196,58 @@ class Movies extends React.Component {
         const movies = moviesStore.getState();
 
         return (
-            <div>
-                <h1>Movies</h1>
-                <MoviesView movies={movies}/>
-                <MoviesInput/>
-            </div>
+            <Tab
+                title={this.constructor.name}
+                rows={movies}
+                onTrashClick={(id) => (
+                    moviesStore.dispatch({
+                        type: 'DELETE_MOVIE',
+                        id: id,
+                    })
+                )}
+                onTitleSubmit={(title) => (
+                    moviesStore.dispatch({
+                        type: 'ADD_MOVIE',
+                        title: title,
+                    })
+                )}
+            />
         );
     }
 }
 
+const Tab = (props) => (
+    <div>
+        <h1>{props.title}</h1>
+        <TitleList
+            rows={props.rows}
+            onClick={props.onTrashClick}
+        />
+        <TitleFieldSubmit
+            onSubmit={props.onTitleSubmit}
+        />
+    </div>
+);
 
-class MoviesView extends React.Component {
-    handleClick = (id) => {
-        moviesStore.dispatch({
-            type: 'DELETE_MOVIE',
-            id: id,
-        });
-    };
-
-    render() {
-        const movies = this.props.movies.map((movie, index) => (
-            <div
-                key={index}
-                onClick={() => this.handleClick(movie.id)}
-            >
-                {movie.title}
-            </div>
-        ));
-        return (
-            <div>
-                {movies}
-            </div>
-        );
-    }
-}
+const TitleList = (props) => (
+    <div>
+        {
+            props.rows.map((row, index) => (
+                <div
+                    key={index}
+                    onClick={() => props.onClick(row.id)}
+                >
+                    <div>
+                        {row.title}
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+);
 
 
-class MoviesInput extends React.Component {
+class TitleFieldSubmit extends React.Component {
     state = {
         value: '',
     };
@@ -358,10 +259,7 @@ class MoviesInput extends React.Component {
     };
 
     handleSubmit = () => {
-        moviesStore.dispatch({
-            type: 'ADD_MOVIE',
-            title: this.state.value,
-        });
+        this.props.onSubmit(this.state.value);
         this.setState({
             value: '',
         });
@@ -370,7 +268,6 @@ class MoviesInput extends React.Component {
     render() {
         return (
             <div>
-                <h2>Movies Input</h2>
                 <input
                     onChange={this.onChange}
                     value={this.state.value}
