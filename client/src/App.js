@@ -1,106 +1,97 @@
 import React from 'react';
-import {createStore} from 'redux'
+import {createStore, combineReducers} from 'redux'
 import uuid from 'uuid';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 
 import './App.css';
 
-function gamesReducer(state, action) {
-    if (action.type === 'ADD_GAME') {
-        const newGame = {
-            title: action.title,
-            id: uuid.v4(),
-        };
-        return {
-            games: state.games.concat(newGame),
-        };
-    } else if (action.type === 'DELETE_GAME') {
-        return {
-            games: state.games.filter((game) => (
-                game.id !== action.id
-            ))
-        };
-    } else {
-        return state;
+
+function gamesReducer(state = [
+    {
+        title: 'Divinity',
+        id: uuid.v4,
+    },
+], action) {
+    switch (action.type) {
+        case 'ADD_GAME': {
+            const newGame = {
+                title: action.title,
+                id: uuid.v4()
+            };
+            return state.concat(newGame);
+        }
+        case 'DELETE_GAME': {
+            return state.filter((game) => (
+                    game.id !== action.id
+                ))
+        }
+        default: {
+            return state
+        }
     }
 }
 
-function seriesReducer(state, action) {
-    if (action.type === 'ADD_SERIES') {
-        const newSeries = {
-            title: action.title,
-            id: uuid.v4(),
-        };
-        return {
-            tvSeries: state.tvSeries.concat(newSeries),
-        };
-    } else if (action.type === 'DELETE_SERIES') {
-        return {
-            tvSeries: state.tvSeries.filter((series) => (
-                series.id !== action.id
-            ))
-        };
-    } else {
-        return state;
+function tvSeriesReducer(state = [
+    {
+        title: 'Better call Soul',
+        id: uuid.v4
+    }
+], action) {
+    switch (action.type) {
+        case 'ADD_SERIES': {
+            const newSeries = {
+                title: action.title,
+                id: uuid.v4()
+            };
+            return state.concat(newSeries);
+        }
+        case 'DELETE_SERIES': {
+            return state.filter((series) => (
+                    series.id !== action.id
+                ))
+        }
+        default: {
+            return state
+        }
     }
 }
 
-function moviesReducer(state, action) {
-    if (action.type === 'ADD_MOVIE') {
-        const newMovie = {
-            title: action.title,
-            id: uuid.v4(),
-        };
-        return {
-            movies: state.movies.concat(newMovie),
-        };
-    } else if (action.type === 'DELETE_MOVIE') {
-        return {
-            movies: state.movies.filter((movie) => (
-                movie.id !== action.id
-            ))
-        };
-    } else {
-        return state;
+function moviesReducer(state = [
+    {
+        title: 'Baby driver',
+        id: uuid.v4,
+    }
+], action) {
+    switch (action.type) {
+        case 'ADD_MOVIE': {
+            const newMovie = {
+                title: action.title,
+                id: uuid.v4()
+            };
+            return state.concat(newMovie);
+
+        }
+        case 'DELETE_MOVIE': {
+            return state.filter((movie) => (
+                    movie.id !== action.id
+                ))
+        }
+        default: {
+            return state
+        }
     }
 }
 
-const initialGamesState = {
-    games: [
-        {
-            title: 'Divinity',
-            id: uuid.v4,
-        }
-    ]
-};
 
-const initialSeriesState = {
-    tvSeries: [
-        {
-            title: 'Better call Soul',
-            id: uuid.v4
-        }
-    ],
-};
 
-const initialMoviesState = {
-    movies: [
-        {
-            title: 'Baby driver',
-            id: uuid.v4,
-        }
-    ],
-};
-
-const gamesStore = createStore(gamesReducer, initialGamesState);
-const seriesStore = createStore(seriesReducer, initialSeriesState);
-const moviesStore = createStore(moviesReducer, initialMoviesState);
+const gamesStore = createStore(gamesReducer);
+const tvSeriesStore = createStore(tvSeriesReducer);
+const moviesStore = createStore(moviesReducer);
 
 
 class App extends React.Component {
 
     render() {
-
         return (
             <Router>
                 <div>
@@ -142,7 +133,7 @@ class Games extends React.Component {
     }
 
     render() {
-        const games = gamesStore.getState().games;
+        const games = gamesStore.getState();
 
         return (
             <div>
@@ -225,11 +216,11 @@ class GamesInput extends React.Component {
 
 class Series extends React.Component {
     componentDidMount() {
-        seriesStore.subscribe(() => this.forceUpdate());
+        tvSeriesStore.subscribe(() => this.forceUpdate());
     }
 
     render() {
-        const tvSeries = seriesStore.getState().tvSeries;
+        const tvSeries = tvSeriesStore.getState();
 
         return (
             <div>
@@ -244,7 +235,7 @@ class Series extends React.Component {
 
 class SeriesView extends React.Component {
     handleClick = (id) => {
-        seriesStore.dispatch({
+        tvSeriesStore.dispatch({
             type: 'DELETE_SERIES',
             id: id,
         });
@@ -280,7 +271,7 @@ class SeriesInput extends React.Component {
     };
 
     handleSubmit = () => {
-        seriesStore.dispatch({
+        tvSeriesStore.dispatch({
             type: 'ADD_SERIES',
             title: this.state.value,
         });
@@ -316,7 +307,7 @@ class Movies extends React.Component {
     }
 
     render() {
-        const movies = moviesStore.getState().movies;
+        const movies = moviesStore.getState();
 
         return (
             <div>
