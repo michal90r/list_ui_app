@@ -31,7 +31,8 @@ class TitleFieldSubmit extends React.Component {
         })
     };
 
-    handleSubmit = () => {
+    onFormSubmit = (e) => {
+        e.preventDefault();
         this.props.onSubmit(this.state.value);
         this.setState({
             value: '',
@@ -41,17 +42,15 @@ class TitleFieldSubmit extends React.Component {
     render() {
         return (
             <div>
-                <input
-                    onChange={this.onChange}
-                    value={this.state.value}
-                    type='text'
-                />
-                <button
-                    onClick={this.handleSubmit}
-                    type="submit"
-                >
-                    Submit
-                </button>
+                <form onSubmit={this.onFormSubmit}>
+                    <input
+                        onChange={this.onChange}
+                        placeholder="title"
+                        value={this.state.value}
+                        type='text'
+                    />
+                    <input type="submit"/>
+                </form>
             </div>
         );
     }
