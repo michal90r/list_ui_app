@@ -10,6 +10,8 @@ const TitleList = (props) => (
                 >
                     <div>
                         {row.title}
+                        {row.releaseDay}
+                        {row.comment}
                     </div>
                 </div>
             ))

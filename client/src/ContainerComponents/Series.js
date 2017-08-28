@@ -8,6 +8,8 @@ import {Tab} from '../PresentationalComponents'
 function reducer(state = [
     {
         title: 'Better call Soul',
+        releaseDay: '',
+        comment: '',
         id: uuid.v4
     }
 ], action) {
@@ -15,6 +17,8 @@ function reducer(state = [
         case 'ADD_SERIES': {
             const newSeries = {
                 title: action.title,
+                releaseDay: action.releaseDay,
+                comment: action.comment,
                 id: uuid.v4()
             };
             return [newSeries].concat(state);

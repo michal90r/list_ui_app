@@ -7,7 +7,9 @@ import {Tab} from '../PresentationalComponents'
 
 function reducer(state = [
     {
-        title: 'Divinity',
+        title: 'Divinity: Original Sin II',
+        releaseDay: '14.09.2017',
+        comment: 'PC',
         id: uuid.v4,
     },
 ], action) {
@@ -15,6 +17,8 @@ function reducer(state = [
         case 'ADD_GAME': {
             const newGame = {
                 title: action.title,
+                releaseDay: action.releaseDay,
+                comment: action.comment,
                 id: uuid.v4()
             };
             return [newGame].concat(state);
