@@ -17,7 +17,7 @@ function reducer(state = [
                 title: action.title,
                 id: uuid.v4()
             };
-            return state.concat(newGame);
+            return [newGame].concat(state);
         }
         case 'DELETE_GAME': {
             return state.filter((game) => (

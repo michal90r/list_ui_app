@@ -17,7 +17,7 @@ function reducer(state = [
                 title: action.title,
                 id: uuid.v4()
             };
-            return state.concat(newSeries);
+            return [newSeries].concat(state);
         }
         case 'DELETE_SERIES': {
             return state.filter((series) => (

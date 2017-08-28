@@ -17,7 +17,7 @@ function reducer(state = [
                 title: action.title,
                 id: uuid.v4()
             };
-            return state.concat(newMovie);
+            return [newMovie].concat(state);
 
         }
         case 'DELETE_MOVIE': {

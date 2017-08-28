@@ -59,12 +59,12 @@ class TitleFieldSubmit extends React.Component {
 const Tab = (props) => (
     <div>
         <h1>{props.title}</h1>
+        <TitleFieldSubmit
+            onSubmit={props.onTitleSubmit}
+        />
         <TitleList
             rows={props.rows}
             onClick={props.onTrashClick}
-        />
-        <TitleFieldSubmit
-            onSubmit={props.onTitleSubmit}
         />
     </div>
 );
