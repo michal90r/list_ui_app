@@ -50,10 +50,12 @@ const mapDispatchToTabProps = (dispatch) => (
                 id: id,
             })
         ),
-        onTitleSubmit: (title) => (
+        onFormSubmit: (e) => (
             dispatch({
                 type: 'ADD_SERIES',
-                title: title,
+                title: e.title,
+                releaseDay: e.releaseDay,
+                comment: e.comment,
             })
         )
     }

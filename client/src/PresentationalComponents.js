@@ -22,33 +22,80 @@ const TitleList = (props) => (
 
 class TitleFieldSubmit extends React.Component {
     state = {
-        value: '',
+        fields: {
+            title: "",
+            releaseDay: "",
+            comment: "",
+        },
+        fieldErrors: {},
     };
 
-    onChange = (e) => {
-        this.setState({
-            value: e.target.value,
-        })
+    onInputChange = (e) => {
+        const fields = this.state.fields;
+        fields[e.target.name] = e.target.value;
+        this.setState({ fields })
     };
 
     onFormSubmit = (e) => {
+        const row = this.state.fields;
+        const fieldErrors = this.validate(row);
+        this.setState({ fieldErrors });
         e.preventDefault();
-        this.props.onSubmit(this.state.value);
+
+        if (Object.keys(fieldErrors).length) return;
+
+        this.props.onSubmit(this.state.fields);
         this.setState({
-            value: '',
+            fields: {
+                title: "",
+                releaseDay: "",
+                comment: "",
+            },
         });
     };
+
+    validate = (row) => {
+        const errors = {};
+        if(!row.title) errors.title = "Title Required";
+        if(!row.releaseDay && !this.isValidDate(row.releaseDay)) errors.releaseDay = "Invalid Date";
+        return errors
+    };
+
+    isValidDate = () => (true);
 
     render() {
         return (
             <div>
                 <form onSubmit={this.onFormSubmit}>
                     <input
-                        onChange={this.onChange}
                         placeholder="title"
-                        value={this.state.value}
-                        type='text'
+                        name="title"
+                        value={this.state.fields.title}
+                        onChange={this.onInputChange}
                     />
+
+                    <span style={{ color: 'red' }}>{this.state.fieldErrors.title}</span>
+
+                    <br />
+
+                    <input
+                        placeholder="release day"
+                        name="releaseDay"
+                        value={this.state.fields.releaseDay}
+                        onChange={this.onInputChange}
+                    />
+
+                    <span style={{ color: 'red' }}>{this.state.fieldErrors.releaseDay}</span>
+
+                    <br />
+
+                    <input
+                        placeholder="comment"
+                        name="comment"
+                        value={this.state.fields.comment}
+                        onChange={this.onInputChange}
+                    />
+
                     <input type="submit"/>
                 </form>
             </div>
@@ -61,7 +108,7 @@ const Tab = (props) => (
     <div>
         <h1>{props.title}</h1>
         <TitleFieldSubmit
-            onSubmit={props.onTitleSubmit}
+            onSubmit={props.onFormSubmit}
         />
         <TitleList
             rows={props.rows}

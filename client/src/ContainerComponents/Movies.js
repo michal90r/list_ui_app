@@ -52,10 +52,12 @@ const mapDispatchToTabProps = (dispatch) => (
                 id: id,
             })
         ),
-        onTitleSubmit: (title) => (
+        onFormSubmit: (e) => (
             dispatch({
                 type: 'ADD_MOVIE',
-                title: title,
+                title: e.title,
+                releaseDay: e.releaseDay,
+                comment: e.comment,
             })
         )
     }
