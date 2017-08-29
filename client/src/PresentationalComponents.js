@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment'
 
+import './App.css';
+
 const TitleList = (props) => (
     <div>
         {
@@ -118,7 +120,7 @@ class TitleFieldSubmit extends React.Component {
             <div>
                 <form onSubmit={this.onFormSubmit}>
                     <Field
-                        placeholder="title"
+                        placeholder="Title"
                         name="title"
                         value={this.state.fields.title}
                         onChange={this.onInputChange}
@@ -128,7 +130,7 @@ class TitleFieldSubmit extends React.Component {
                     <br/>
 
                     <Field
-                        placeholder="DD/MM/YYYY"
+                        placeholder="Release day, dd/mm/yyyy"
                         name="releaseDay"
                         value={this.state.fields.releaseDay}
                         onChange={this.onInputChange}
@@ -138,7 +140,7 @@ class TitleFieldSubmit extends React.Component {
                     <br/>
 
                     <Field
-                        placeholder="comment"
+                        placeholder="Comment"
                         name="comment"
                         value={this.state.fields.comment}
                         onChange={this.onInputChange}
@@ -155,9 +157,11 @@ class TitleFieldSubmit extends React.Component {
 const Tab = (props) => (
     <div>
         <h1>{props.title}</h1>
-        <TitleFieldSubmit
-            onSubmit={props.onFormSubmit}
-        />
+        <div className="formWrapper">
+            <TitleFieldSubmit
+                onSubmit={props.onFormSubmit}
+            />
+        </div>
         <TitleList
             rows={props.rows}
             onClick={props.onTrashClick}

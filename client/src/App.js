@@ -13,25 +13,26 @@ class App extends React.Component {
         return (
             <Router>
                 <div>
-                    <ul>
-                        <li>
-                            <Link to='/games'>
-                                <code>games</code>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to='/series'>
-                                <code>series</code>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to='/movies'>
-                                <code>movies</code>
-                            </Link>
-                        </li>
-                    </ul>
+                    <div className="header">
+                        <ul>
+                            <li>
+                                <Link to='/games'>
+                                    <code>games</code>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to='/series'>
+                                    <code>series</code>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to='/movies'>
+                                    <code>movies</code>
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
 
-                    <hr/>
                     <Switch>
                         <Route exact path='/' component={Games}/>
                         <Route path='/games' component={Games}/>
