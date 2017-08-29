@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment'
 
 const TitleList = (props) => (
     <div>
@@ -108,7 +109,9 @@ class TitleFieldSubmit extends React.Component {
         return false;
     };
 
-    isValidDate = () => (true);
+    isValidDate = (val) => {
+        return val === "" ? true : moment(val, "DD/MM/YYYY", true).isValid();
+    };
 
     render() {
         return (
@@ -125,7 +128,7 @@ class TitleFieldSubmit extends React.Component {
                     <br/>
 
                     <Field
-                        placeholder="release day"
+                        placeholder="DD/MM/YYYY"
                         name="releaseDay"
                         value={this.state.fields.releaseDay}
                         onChange={this.onInputChange}
