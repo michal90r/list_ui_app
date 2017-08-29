@@ -11,7 +11,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .header {
   background-color: #000;
   margin: auto;
-  padding: 20px 15px;
+  padding: 40px 15px;
   text-align: center;
   text-transform: uppercase;
   width: 100%;
@@ -20,9 +20,39 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 .formWrapper {
   position: fixed;
-  top: 120px;
+  top: 140px;
 }
 
-.header>ul>li{
-
+.header li{
+  display: inline-block;
+  margin-right: 120px;
 }
+
+.header a{
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #fff;
+}
+
+/*
+#games{
+  position: fixed;
+  left: 100px;
+  top: 50px
+}
+
+#series{
+  position: fixed;
+  text-align: center;
+  top: 50px;
+}
+
+#movies{
+  position: fixed;
+  right: 100px;
+  top: 50px
+}
+*/
+
+
+

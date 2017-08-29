@@ -17,17 +17,17 @@ class App extends React.Component {
                         <ul>
                             <li>
                                 <Link to='/games'>
-                                    <code>games</code>
+                                    <code id="games">Games</code>
                                 </Link>
                             </li>
                             <li>
                                 <Link to='/series'>
-                                    <code>series</code>
+                                    <code id="series">series</code>
                                 </Link>
                             </li>
                             <li>
                                 <Link to='/movies'>
-                                    <code>movies</code>
+                                    <code id="movies">movies</code>
                                 </Link>
                             </li>
                         </ul>
