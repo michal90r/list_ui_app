@@ -16,6 +16,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   text-transform: uppercase;
   width: 100%;
   position: fixed;
+  border-bottom-style: solid;
+  border-bottom-color: #fdb918;
+  border-bottom-width: 20px;
 }
 
 .formWrapper {
