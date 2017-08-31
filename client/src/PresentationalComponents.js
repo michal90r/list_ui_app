@@ -61,8 +61,8 @@ class Field extends React.Component {
                     value={this.state.value}
                     onChange={this.onChange}
                     maxLength={20}
+                    className={this.state.error && "errorMark"}
                 />
-                <span style={{color: 'red'}}>{this.state.error}</span>
             </div>
         );
     }
