@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom'
 
 import Games from './ContainerComponents/Games'
 import Series from './ContainerComponents/Series'
@@ -16,19 +16,19 @@ class App extends React.Component {
                     <div className="header">
                         <ul>
                             <li>
-                                <Link to='/games'>
-                                    <code id="games">Games</code>
-                                </Link>
+                                <NavLink to='/games' activeClassName="active">
+                                    <code id="games" >Games</code>
+                                </NavLink>
                             </li>
                             <li>
-                                <Link to='/series'>
+                                <NavLink to='/series' activeClassName="active">
                                     <code id="series">series</code>
-                                </Link>
+                                </NavLink>
                             </li>
                             <li>
-                                <Link to='/movies'>
+                                <NavLink to='/movies' activeClassName="active">
                                     <code id="movies">movies</code>
-                                </Link>
+                                </NavLink>
                             </li>
                         </ul>
                     </div>
