@@ -9,6 +9,7 @@ const TitleList = (props) => (
         {
             props.rows.map((row, index) => (
                 <div
+                    className="row"
                     key={index}
                     onClick={() => props.onClick(row.id)}
                 >
