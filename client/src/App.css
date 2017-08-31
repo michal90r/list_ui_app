@@ -10,8 +10,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 .header {
     background-color: #000;
-    margin: auto;
-    padding: 40px 50px;
+    margin: 0;
+    padding: 40px 0;
     text-align: center;
     text-transform: uppercase;
     min-width: 100%;
@@ -22,7 +22,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     border-bottom-width: 20px;
 }
 
-
 .header li {
     display: inline-block;
     margin-right: 120px;
@@ -30,7 +29,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-weight: bold;
 }
 
-.header a{
+.header a {
     color: #fff
 }
 
@@ -38,25 +37,24 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     color: #fdb918
 }
 
-
 .formWrapper {
     position: absolute;
     top: 140px;
     left: 60px;
 }
 
-.formWrapper form{
+.formWrapper form {
     display: flex;
 
 }
 
-.formWrapper input{
+.formWrapper input {
     padding: 10px;
     width: 250px;
     font-weight: bold;
 }
 
-.listWrapper{
+.listWrapper {
     display: block;
     position: absolute;
     top: 250px;
@@ -66,9 +64,26 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     padding-top: 5px;
 }
 
-.row{
+.row {
     border-bottom: 1px solid #000000;
-    padding: 10px 0 10px 0
+    padding: 10px 0 10px 0;
+    display: table;
+    width: 850px;
+}
+
+.titleCol{
+    display: table-cell;
+    width: 280px;
+}
+
+.releaseCol{
+    display: table-cell;
+    width: 280px;
+}
+
+.commentCol{
+    display: table-cell;
+    width: 280px;
 }
 
 

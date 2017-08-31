@@ -14,9 +14,9 @@ const TitleList = (props) => (
                     onClick={() => props.onClick(row.id)}
                 >
                     <div>
-                        {row.title}
-                        {row.releaseDay}
-                        {row.comment}
+                        <div className="titleCol">{row.title}</div>
+                        <div className="releaseCol">{row.releaseDay}</div>
+                        <div className="commentCol">{row.comment}</div>
                     </div>
                 </div>
             ))
@@ -56,9 +56,11 @@ class Field extends React.Component {
         return (
             <div>
                 <input
+                    type="text"
                     placeholder={this.props.placeholder}
                     value={this.state.value}
                     onChange={this.onChange}
+                    maxLength={20}
                 />
                 <span style={{color: 'red'}}>{this.state.error}</span>
             </div>
