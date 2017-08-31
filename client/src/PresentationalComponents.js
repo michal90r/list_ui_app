@@ -164,10 +164,12 @@ const Tab = (props) => (
                 onSubmit={props.onFormSubmit}
             />
         </div>
-        <TitleList
-            rows={props.rows}
-            onClick={props.onTrashClick}
-        />
+        <div className="listWrapper">
+            <TitleList
+                rows={props.rows}
+                onClick={props.onTrashClick}
+            />
+        </div>
     </div>
 );
 

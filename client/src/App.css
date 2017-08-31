@@ -16,7 +16,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     text-transform: uppercase;
     min-width: 100%;
     width: 980px;
-    position: fixed;
+    position: relative;
     border-bottom-style: solid;
     border-bottom-color: #fdb918;
     border-bottom-width: 20px;
@@ -40,7 +40,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 
 .formWrapper {
-    position: fixed;
+    position: absolute;
     top: 140px;
     left: 50%;
     transform: translate(-50%,0);
@@ -55,6 +55,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     padding: 10px;
     width: 250px;
     font-weight: bold;
+}
+
+.listWrapper{
+    display: block;
+    position: relative;
+    top: 120px;
 }
 
 
