@@ -17,7 +17,7 @@ class App extends React.Component {
                         <ul>
                             <li>
                                 <NavLink to='/games' activeClassName="active">
-                                    <code id="games" >Games</code>
+                                    <code id="games">Games</code>
                                 </NavLink>
                             </li>
                             <li>
