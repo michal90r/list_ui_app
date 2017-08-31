@@ -146,7 +146,9 @@ class TitleFieldSubmit extends React.Component {
                         onChange={this.onInputChange}
                     />
 
-                    <input type="submit" disabled={this.validate()}/>
+                    <button type="submit" disabled={this.validate()}>
+                        >
+                    </button>
                 </form>
             </div>
         );

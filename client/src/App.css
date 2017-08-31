@@ -11,7 +11,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .header {
     background-color: #000;
     margin: auto;
-    padding: 40px 15px;
+    padding: 40px 50px;
     text-align: center;
     text-transform: uppercase;
     width: 100%;
@@ -21,11 +21,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     border-bottom-width: 20px;
 }
 
-.formWrapper {
-    position: fixed;
-    top: 140px;
-}
-
 .header li {
     display: inline-block;
     margin-right: 120px;
@@ -33,12 +28,33 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-weight: bold;
 }
 
-a{
+.header a{
     color: #fff
 }
 
-a.active {
+.header a.active {
     color: #fdb918
 }
+
+.formWrapper {
+    position: fixed;
+    top: 140px;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+.formWrapper form{
+    display: flex;
+
+}
+
+.formWrapper input{
+    padding: 10px;
+    width: 250px;
+    font-weight: bold;
+}
+
+
+
 
 
