@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect, NavLink, Switch} from 'react-router-dom'
 
 import Games from './ContainerComponents/Games'
 import Series from './ContainerComponents/Series'
@@ -34,7 +34,11 @@ class App extends React.Component {
                     </div>
 
                     <Switch>
-                        <Route exact path='/' component={Games}/>
+                        <Route exact path='/' render={() => (
+                            <Redirect
+                                to='/games'
+                            />
+                        )}/>
                         <Route path='/games' component={Games}/>
                         <Route path='/series' component={Series}/>
                         <Route path='/movies' component={Movies}/>
