@@ -8,7 +8,7 @@ import {Tab} from '../PresentationalComponents'
 function reducer(state = [
     {
         title: 'Divinity: Original Sin II',
-        releaseDay: '14.09.2017',
+        releaseDay: '14/09/2017',
         comment: 'PC',
         id: uuid.v4,
     },

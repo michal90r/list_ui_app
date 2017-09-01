@@ -13,7 +13,7 @@ class App extends React.Component {
         return (
             <Router>
                 <div>
-                    <div className="header">
+                    <div id="header">
                         <ul>
                             <li>
                                 <NavLink to='/games' activeClassName="active">

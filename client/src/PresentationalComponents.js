@@ -173,12 +173,12 @@ class TitleFieldSubmit extends React.Component {
 const Tab = (props) => (
     <div>
         <h1>{props.title}</h1>
-        <div className="formWrapper">
+        <div id="formWrapper">
             <TitleFieldSubmit
                 onSubmit={props.onFormSubmit}
             />
         </div>
-        <div className="listWrapper">
+        <div id="listWrapper">
             <TitleList
                 rows={props.rows}
                 onClick={props.onDeleteClick}

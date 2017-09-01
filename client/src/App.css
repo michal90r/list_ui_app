@@ -8,13 +8,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     background: transparent;
 }
 
-.body{
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-}
-
-.header {
+#header {
     background-color: #000;
     margin: 0;
     padding: 40px 0;
@@ -28,39 +22,39 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     border-bottom-width: 20px;
 }
 
-.header li {
+#header li {
     display: inline-block;
     margin-right: 120px;
     font-size: 1.6em;
     font-weight: bold;
 }
 
-.header a {
+#header a {
     color: #fff
 }
 
-.header a.active {
+#header a.active {
     color: #fdb918
 }
 
-.formWrapper {
+#formWrapper {
     position: absolute;
     top: 140px;
     left: 60px;
 }
 
-.formWrapper form {
+#formWrapper form {
     display: flex;
 
 }
 
-.formWrapper input {
+#formWrapper input {
     padding: 10px;
     width: 250px;
     font-weight: bold;
 }
 
-.listWrapper {
+#listWrapper {
     display: block;
     position: absolute;
     top: 250px;
