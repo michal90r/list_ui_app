@@ -3,7 +3,7 @@ import {createStore} from 'redux'
 import uuid from 'uuid';
 import {Provider, connect} from 'react-redux'
 
-import {Tab} from '../PresentationalComponents'
+import {Tab} from '../PresentationalComponenets/Tab'
 
 function reducer(state = [
     {

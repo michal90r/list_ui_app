@@ -22,12 +22,12 @@ class App extends React.Component {
                             </li>
                             <li>
                                 <NavLink to='/series' activeClassName="active">
-                                    <code id="series">series</code>
+                                    <code id="series">Series</code>
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to='/movies' activeClassName="active">
-                                    <code id="movies">movies</code>
+                                    <code id="movies">Movies</code>
                                 </NavLink>
                             </li>
                         </ul>
