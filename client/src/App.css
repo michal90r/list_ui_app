@@ -8,6 +8,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     background: transparent;
 }
 
+.body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
 .header {
     background-color: #000;
     margin: 0;
@@ -73,8 +79,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 .titleCol{
     display: table-cell;
-    width: 280px;
-    max-width: 280px;
+    padding-left: 8px;
+    width: 277px;
+    max-width: 277px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -82,8 +89,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 .releaseCol{
     display: table-cell;
-    width: 280px;
-    max-width: 280px;
+    width: 277px;
+    max-width: 277px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -91,8 +98,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 .commentCol{
     display: table-cell;
-    width: 265px;
-    max-width: 265px;
+    width: 262px;
+    max-width: 262px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
