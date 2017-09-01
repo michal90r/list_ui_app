@@ -91,29 +91,21 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 .commentCol{
     display: table-cell;
-    width: 240px;
-    max-width: 240px;
+    width: 265px;
+    max-width: 265px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.iconCol1{
+
+.iconCol{
     display: table-cell;
 }
 
-.iconCol2{
-    display: table-cell;
-}
-
-.editImg{
-    height: 22px;
-    width: auto;
-    display: table-cell;
-}
 
 .deleteImg{
-    height: 28px;
+    height: 20px;
     width: auto;
     display: table-cell;
 }

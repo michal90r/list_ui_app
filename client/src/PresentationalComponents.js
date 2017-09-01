@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment'
 
-import EditImg from './assets/edit.svg'
 import DeleteImg from './assets/delete.svg'
 
 import './App.css';
@@ -20,16 +19,7 @@ const TitleList = (props) => (
                         <div className="releaseCol">{row.releaseDay}</div>
                         <div className="commentCol">{row.comment}</div>
                         <div
-                            className="iconCol1"
-                        >
-                            <img
-                                className="editImg"
-                                alt="edit"
-                                src={EditImg}
-                            />
-                        </div>
-                        <div
-                            className="iconCol2"
+                            className="iconCol"
                             onClick={() => props.onClick(row.id)}
                         >
                             <img
