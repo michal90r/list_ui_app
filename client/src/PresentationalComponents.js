@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment'
 
+import EditImg from './assets/edit.svg'
+import DeleteImg from './assets/delete.svg'
+
 import './App.css';
 
 const TitleList = (props) => (
@@ -11,12 +14,30 @@ const TitleList = (props) => (
                 <div
                     className="row"
                     key={index}
-                    onClick={() => props.onClick(row.id)}
                 >
                     <div>
                         <div className="titleCol">{row.title}</div>
                         <div className="releaseCol">{row.releaseDay}</div>
                         <div className="commentCol">{row.comment}</div>
+                        <div
+                            className="iconCol1"
+                        >
+                            <img
+                                className="editImg"
+                                alt="edit"
+                                src={EditImg}
+                            />
+                        </div>
+                        <div
+                            className="iconCol2"
+                            onClick={() => props.onClick(row.id)}
+                        >
+                            <img
+                                className="deleteImg"
+                                alt="delete"
+                                src={DeleteImg}
+                            />
+                        </div>
                     </div>
                 </div>
             ))
@@ -60,7 +81,7 @@ class Field extends React.Component {
                     placeholder={this.props.placeholder}
                     value={this.state.value}
                     onChange={this.onChange}
-                    maxLength={20}
+                    maxLength={32}
                     className={this.state.error && "errorMark"}
                 />
             </div>
@@ -150,7 +171,7 @@ class TitleFieldSubmit extends React.Component {
                     />
 
                     <button type="submit" disabled={this.validate()}>
-                        >
+                        {">"}
                     </button>
                 </form>
             </div>
@@ -170,7 +191,7 @@ const Tab = (props) => (
         <div className="listWrapper">
             <TitleList
                 rows={props.rows}
-                onClick={props.onTrashClick}
+                onClick={props.onDeleteClick}
             />
         </div>
     </div>

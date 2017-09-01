@@ -46,7 +46,7 @@ const mapStateToTabProps = (state) => {
 
 const mapDispatchToTabProps = (dispatch) => (
     {
-        onTrashClick: (id) => (
+        onDeleteClick: (id) => (
             dispatch({
                 type: 'DELETE_MOVIE',
                 id: id,

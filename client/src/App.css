@@ -74,21 +74,50 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .titleCol{
     display: table-cell;
     width: 280px;
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .releaseCol{
     display: table-cell;
     width: 280px;
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .commentCol{
     display: table-cell;
-    width: 280px;
+    width: 240px;
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.iconCol1{
+    display: table-cell;
+}
+
+.iconCol2{
+    display: table-cell;
+}
+
+.editImg{
+    height: 22px;
+    width: auto;
+    display: table-cell;
+}
+
+.deleteImg{
+    height: 28px;
+    width: auto;
+    display: table-cell;
 }
 
 .errorMark{
     border-color: #ff0000;
 }
-
-
-
