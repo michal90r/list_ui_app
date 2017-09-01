@@ -34,6 +34,22 @@ function reducer(state = [
     }
 }
 
+function addSeries(title, releaseDay, comment) {
+    return {
+        type: 'ADD_SERIES',
+        title: title,
+        releaseDay: releaseDay,
+        comment: comment
+    };
+}
+
+function deleteSeries(id) {
+    return {
+        type: 'DELETE_SERIES',
+        id: id,
+    }
+}
+
 const store = createStore(reducer);
 
 const mapStateToTabProps = (state) => {
@@ -45,18 +61,10 @@ const mapStateToTabProps = (state) => {
 const mapDispatchToTabProps = (dispatch) => (
     {
         onDeleteClick: (id) => (
-            dispatch({
-                type: 'DELETE_SERIES',
-                id: id,
-            })
+            dispatch(deleteSeries(id))
         ),
         onFormSubmit: (e) => (
-            dispatch({
-                type: 'ADD_SERIES',
-                title: e.title,
-                releaseDay: e.releaseDay,
-                comment: e.comment,
-            })
+            dispatch(addSeries(e.title, e.releaseDay, e.comment))
         )
     }
 );

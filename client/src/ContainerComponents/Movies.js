@@ -35,6 +35,22 @@ function reducer(state = [
     }
 }
 
+function addMovie(title, releaseDay, comment) {
+    return {
+        type: 'ADD_MOVIE',
+        title: title,
+        releaseDay: releaseDay,
+        comment: comment
+    };
+}
+
+function deleteMovie(id) {
+    return {
+        type: 'DELETE_MOVIE',
+        id: id,
+    }
+}
+
 const store = createStore(reducer);
 
 
@@ -47,18 +63,10 @@ const mapStateToTabProps = (state) => {
 const mapDispatchToTabProps = (dispatch) => (
     {
         onDeleteClick: (id) => (
-            dispatch({
-                type: 'DELETE_MOVIE',
-                id: id,
-            })
+            dispatch(deleteMovie(id))
         ),
         onFormSubmit: (e) => (
-            dispatch({
-                type: 'ADD_MOVIE',
-                title: e.title,
-                releaseDay: e.releaseDay,
-                comment: e.comment,
-            })
+            dispatch(addMovie(e.title, e.releaseDay, e.comment))
         )
     }
 );

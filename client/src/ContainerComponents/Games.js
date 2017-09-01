@@ -34,6 +34,22 @@ function reducer(state = [
     }
 }
 
+function addGame(title, releaseDay, comment) {
+    return {
+        type: 'ADD_GAME',
+        title: title,
+        releaseDay: releaseDay,
+        comment: comment
+    };
+}
+
+function deleteGame(id) {
+    return {
+        type: 'DELETE_GAME',
+        id: id,
+    }
+}
+
 const store = createStore(reducer);
 
 const mapStateToTabProps = (state) => {
@@ -45,18 +61,10 @@ const mapStateToTabProps = (state) => {
 const mapDispatchToTabProps = (dispatch) => (
     {
         onDeleteClick: (id) => (
-            dispatch({
-                type: 'DELETE_GAME',
-                id: id,
-            })
+            dispatch(deleteGame(id))
         ),
         onFormSubmit: (e) => (
-            dispatch({
-                type: 'ADD_GAME',
-                title: e.title,
-                releaseDay: e.releaseDay,
-                comment: e.comment,
-            })
+            dispatch(addGame(e.title, e.releaseDay, e.comment))
         )
     }
 );
